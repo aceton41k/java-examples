@@ -1,4 +1,4 @@
 @FunctionalInterface
-public interface AnotherFuncInt<V> {
+public interface FuncInt<V> {
     boolean k(int x, int y);
 }

@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+    id 'checkstyle'
+}
+
+
+repositories {
+    mavenLocal()
+    maven {
+        url = uri('https://repo.maven.apache.org/maven2/')
+    }
+}
+
+dependencies {
+    implementation 'org.seleniumhq.selenium:selenium-java:4.23.1'
+    compileOnly 'org.projectlombok:lombok:1.18.34'
+    annotationProcessor 'org.projectlombok:lombok:1.18.34'
+    implementation 'org.junit.jupiter:junit-jupiter:5.11.0-RC1'
+    implementation 'com.arakelian:faker:4.0.1'
+
+    testCompileOnly 'org.projectlombok:lombok:1.18.34'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.34'
+}
+
+group = 'examples'
+version = '0.1-SNAPSHOT'
+description = 'examples'
+java.sourceCompatibility = JavaVersion.VERSION_16
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+ test {
+     useJUnitPlatform()
+ }
