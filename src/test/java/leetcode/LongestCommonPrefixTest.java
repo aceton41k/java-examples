@@ -1,3 +1,5 @@
+package leetcode;
+
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -9,8 +11,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class LongestCommonPrefixTest {
 
     public static Stream<Arguments> isPalindromeTestData() {
-        return Stream.of(Arguments.of(new String[]{"car", "cab"}, "ca"),
-                Arguments.of(new String[]{"carrot", "caroline", "carol"}, "car"));
+        return Stream.of(
+                Arguments.of(new String[]{"car", "cab"}, "ca"),
+                Arguments.of(new String[]{"carrot", "caroline", "carol"}, "car"),
+                Arguments.of(new String[]{"abc", ""}, ""),
+                Arguments.of(new String[]{"abc", "def"}, ""));
     }
 
     @ParameterizedTest

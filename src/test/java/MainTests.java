@@ -2,12 +2,9 @@ import lombok.extern.java.Log;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.*;
 import java.util.*;
-import java.util.logging.Level;
 import java.util.stream.Collectors;
 
 @Log
@@ -146,8 +143,7 @@ public class MainTests {
     @Test
     void anotherLambdaTest() {
         useFunc((x, y) -> {
-            if (x > y) return true;
-            else return false;
+            return x > y;
         });
     }
 
@@ -195,14 +191,6 @@ public class MainTests {
 
         System.out.println("Serialized successfully.");
     }
-
-
-    @ParameterizedTest
-    @ValueSource(ints = {3, 0, -1})
-    public void powerOfThreeTest (int n) {
-        assert PowerOfThree.isPowerOfThree(n);
-    }
-
 
 
 }

@@ -1,13 +1,11 @@
+package leetcode;
+
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.*;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -42,16 +40,6 @@ public class LeetCodeTests {
     static Stream<Arguments> diffArraysProvider() {
         return Stream.of(
                 Arguments.of(new int[]{1, 2, 3}, new int[]{2, 4, 6}, List.of(1, 3), List.of(4, 6)));
-    }
-
-    @ParameterizedTest
-    @CsvSource({
-            "badc, baba",
-            "строка3, строка4",
-            "строка5, строка6"
-    })
-    public void isIsomorphingTest(String str1, String str2) {
-        assert isIsomorphic(str1, str2);
     }
 
     @ParameterizedTest
@@ -126,25 +114,6 @@ public class LeetCodeTests {
 
         }
         return new String(ca);
-    }
-
-    public static boolean isIsomorphic(String s, String t) {
-        if (s.length() != t.length()) return false;
-        if (s.equals(t)) return true;
-        var map = new HashMap<Character, Character>();
-        for (int i = 0; i < s.length(); i++) {
-            var sc = s.charAt(i);
-            var tc = t.charAt(i);
-            if (!map.containsKey(sc) && !map.containsValue(tc))
-                map.put(sc, tc);
-            else if (map.get(sc) != tc)
-                return false;
-            else if (map.get(sc) == tc)
-                return false;
-
-
-        }
-        return true;
     }
 
     public static boolean isIsomorphicBest(String s, String t) {
