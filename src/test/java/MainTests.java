@@ -151,7 +151,7 @@ public class MainTests {
     public void genTest() {
         List<String> list = new ArrayList<>();
         list.add("123");
-        SomeType st = new SomeType();
+        SomeType<?> st = new SomeType<>();
         st.test(list);
     }
 
@@ -181,7 +181,7 @@ public class MainTests {
         log.info(cat.toString());
 
         FileOutputStream fileOutputStream =
-                new FileOutputStream("resources/Cat.info");
+                new FileOutputStream("src/test/resources/Cat.info");
         ObjectOutputStream outputStream =
                 new ObjectOutputStream(fileOutputStream);
 

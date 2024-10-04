@@ -42,58 +42,9 @@ public class LeetCodeTests {
                 Arguments.of(new int[]{1, 2, 3}, new int[]{2, 4, 6}, List.of(1, 3), List.of(4, 6)));
     }
 
-    @ParameterizedTest
-    @MethodSource("provideArguments")
-    public void diffTest(int[] a1, int[] a2, List<Integer> a3) {
-        Assertions.assertEquals(a3, arrayNotContainsElements(a1, a2), "Arrays are not equal");
-    }
 
 
-    static Stream<Arguments> provideArguments() {
-        return Stream.of(
-                Arguments.of(new int[]{1, 2, 3, 5}, new int[]{0, 2, 4}, List.of(1, 3, 5)),
-                Arguments.of(new int[]{0, 2, 6}, new int[]{2}, List.of(0, 6)),
-                Arguments.of(new int[]{0}, new int[]{0, 1}, Collections.emptyList()),
-                Arguments.of(new int[]{0, 8}, new int[]{2, 7}, List.of(0, 8)),
-                Arguments.of(new int[]{2, 3, 6}, new int[]{0, 1, 3, 5, 9}, List.of(2, 6)));
-    }
 
-    public static Stream<Arguments> canConstructTestData() {
-        return Stream.of(
-                Arguments.of("aa", "aab", true),
-                Arguments.of("abab", "abab", true),
-                Arguments.of("a", "b", false),
-                Arguments.of("aad", "aab", false),
-                Arguments.of("aa", "ab", false)
-        );
-    }
-
-    @ParameterizedTest
-    @MethodSource("canConstructTestData")
-    public void canConstructTest(String a1, String a2, boolean res) {
-        assertEquals(canConstruct(a1, a2), res);
-    }
-
-    public boolean canConstruct(String ransomNote, String magazine) {
-        var mag = new HashMap<Character, Integer>();
-        for (int i = 0; i < magazine.length(); i++) {
-            char c = magazine.charAt(i);
-            mag.put(c, mag.getOrDefault(c, 0) + 1);
-        }
-
-
-        for (int i = 0; i < ransomNote.length(); i++) {
-            char c = ransomNote.charAt(i);
-            Integer count = mag.get(c);
-
-            if(count == null || count == 0) return false;
-
-            mag.put(c, count -1);
-        }
-
-
-        return true;
-    }
 
     public String reverseVowels(String s) {
         char bf;
@@ -116,48 +67,12 @@ public class LeetCodeTests {
         return new String(ca);
     }
 
-    public static boolean isIsomorphicBest(String s, String t) {
-        int[] map1 = new int[200];
-        int[] map2 = new int[200];
-        if (s.length() != t.length())
-            return false;
-        for (int i = 0; i < s.length(); i++) {
-            if (map1[s.charAt(i)] != map2[t.charAt(i)])
-                return false;
-            map1[s.charAt(i)] = i + 1;
-            map2[t.charAt(i)] = i + 1;
-        }
-        return true;
-    }
 
     boolean isVowel(char c) {
         return (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'y' || c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U' || c == 'Y');
     }
 
-    public List<Integer> arrayNotContainsElements(int[] arr1, int[] arr2) {
-        // вывести элементы первого массива, которых нет во втором
-        // массивы отсортированы
-        // [1, 2, 3, 5]
-        // [0, 2, 4]               -> [1]
-        var list = new ArrayList<Integer>();
-        int i = 0;
-        int j = 0;
-        while (i < arr1.length && j < arr2.length) {
-            if (arr1[i] < arr2[j]) {
-                list.add(arr1[i]);
-                i++;
-            } else if (arr1[i] == arr2[j]) {
-                i++;
-                j++;
-            } else
-                j++;
-        }
-        for (int k = i; k < arr1.length; k++) {
-            list.add(arr1[k]);
-        }
 
-        return list;
-    }
 
     public List<List<Integer>> findDifference(int[] nums1, int[] nums2) {
         var set = new HashSet<Integer>(Arrays.stream(nums1).boxed().toList());
