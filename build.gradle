@@ -17,9 +17,11 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok:1.18.34'
     implementation 'org.junit.jupiter:junit-jupiter:5.11.0-RC1'
     implementation 'com.arakelian:faker:4.0.1'
+    implementation 'org.assertj:assertj-core:3.26.3'
 
     testCompileOnly 'org.projectlombok:lombok:1.18.34'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.34'
+    testImplementation 'org.mockito:mockito-core:5.14.1'
 }
 
 group = 'examples'
