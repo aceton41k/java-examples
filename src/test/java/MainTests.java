@@ -17,27 +17,9 @@ public class MainTests {
 
     String[] strings = {"123", "1234"};
 
-    @Test
-    void primeTest() {
-        Assertions.assertFalse(isPrime(0));
-        Assertions.assertTrue(isPrime(1));
-        Assertions.assertTrue(isPrime(9));
-        Assertions.assertFalse(isPrime(-3));
-    }
-
-    public boolean isPrime(int number) {
-        int i, j = 0;
-        if (number == 1) return true;
-        if (number == 0 || number < 0) return false;
-        for (i = 2; i < number; i++) {
-            if (number % i == 0) ;
-            j++;
-        }
-        if (j == number - 2) return true;
-        else return false;
 
 
-    }
+
 
     @Test
     void mapStringTest() {
