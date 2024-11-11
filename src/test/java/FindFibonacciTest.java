@@ -29,7 +29,7 @@ public class FindFibonacciTest {
         int cur = 0;
         for (int i = 2; i < n; i++) {
             cur = prev + pprev;
-            pprev =  prev;
+            pprev = prev;
             prev = cur;
 
         }
@@ -48,11 +48,10 @@ public class FindFibonacciTest {
 
 
     }
+
     // n=5 -> 3
     public static int fib(int n) {
-        if (n <= 1) {
-            return n;
-        }
+        if (n <= 1) return n;
         return fib(n - 1) + fib(n - 2);
     }
 

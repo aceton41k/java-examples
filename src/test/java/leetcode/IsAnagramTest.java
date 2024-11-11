@@ -18,7 +18,8 @@ public class IsAnagramTest {
                 Arguments.of("aacc", "ccac", false),
                 Arguments.of("anagram", "nagaram", true),
                 Arguments.of("a", "b", false),
-                Arguments.of("yqhbicoumu", "ouiuycbmqh", true)
+                Arguments.of("yqhbicoumu", "ouiuycbmqh", true),
+                Arguments.of("ab", "bac", false)
         );
     }
 

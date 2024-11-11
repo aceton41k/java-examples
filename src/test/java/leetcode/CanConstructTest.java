@@ -1,20 +1,13 @@
 package leetcode;
 
-import org.assertj.core.api.SoftAssertions;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.HashMap;
 import java.util.stream.Stream;
 
-import static java.util.Arrays.asList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CanConstructTest {
 
@@ -32,23 +25,23 @@ public class CanConstructTest {
     @ParameterizedTest
     @MethodSource("testData")
     public void test(String a1, String a2, boolean res) {
-        assertEquals(canConstruct(a1, a2), res);
+        assertEquals(res, canConstruct(a1, a2));
     }
 
     public boolean canConstruct(String ransomNote, String magazine) {
-        var mag = new HashMap<Character, Integer>();
+        var map = new HashMap<Character, Integer>();
         for (int i = 0; i < magazine.length(); i++) {
             char c = magazine.charAt(i);
-            mag.put(c, mag.getOrDefault(c, 0) + 1);
+            map.put(c, map.getOrDefault(c, 0) + 1);
         }
 
         for (int i = 0; i < ransomNote.length(); i++) {
             char c = ransomNote.charAt(i);
-            Integer count = mag.get(c);
+            Integer count = map.get(c);
 
             if(count == null || count == 0) return false;
 
-            mag.put(c, count -1);
+            map.put(c, count -1);
         }
 
         return true;
